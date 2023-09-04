@@ -1,0 +1,3 @@
+
+
+select fistname as name, lastname as surname from employee;

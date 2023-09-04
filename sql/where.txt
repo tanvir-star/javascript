@@ -1,0 +1,18 @@
+Query for WHERE: 
+
+select * from where age > 28
+
+-- Retrieve employees with a specific last name
+SELECT EmployeeID, FirstName, LastName
+FROM Employees
+WHERE LastName = 'Smith';
+
+-- Retrieve employees with a salary between 40000 and 60000
+SELECT EmployeeID, FirstName, LastName
+FROM Employees
+WHERE Salary BETWEEN 40000 AND 60000;
+
+-- Retrieve employees with a specific first name and salary greater than 50000
+SELECT EmployeeID, FirstName, LastName
+FROM Employees
+WHERE FirstName = 'John' AND Salary > 50000;

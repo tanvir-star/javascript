@@ -1,0 +1,41 @@
+In SQL, a primary key is a field or a combination of fields in a table that uniquely identifies each row. It ensures that each row has a unique identifier, and it's used to enforce data integrity, establish relationships between tables, and optimize data retrieval.
+
+Here's how you define and use a primary key in SQL:
+
+Defining a Primary Key:
+To define a primary key for a table, you usually use the PRIMARY KEY constraint when creating the table. You can define the primary key on one or more columns. Each column specified in the primary key must contain unique and non-null values.
+sql
+
+CREATE TABLE users (
+  id INT PRIMARY KEY,
+  username VARCHAR(50) NOT NULL,
+  email VARCHAR(100) UNIQUE
+);
+In this example, the id column is defined as the primary key. It will ensure that each value in the id column is unique and not NULL.
+
+Modifying an Existing Table:
+You can also add a primary key to an existing table using the ALTER TABLE statement:
+sql
+
+ALTER TABLE products
+ADD PRIMARY KEY (product_id);
+Composite Primary Key:
+A composite primary key involves using multiple columns together to uniquely identify a row. This is useful when a single column may not provide enough uniqueness.
+sql
+
+CREATE TABLE orders (
+  order_id INT,
+  product_id INT,
+  PRIMARY KEY (order_id, product_id)
+);
+In this example, the combination of order_id and product_id forms the primary key.
+
+Auto-Increment Primary Key:
+In many database systems, you can use an auto-incrementing value as the primary key. This means that the database system automatically assigns a unique value to the primary key when you insert a new row.
+sql
+
+CREATE TABLE students (
+  id INT AUTO_INCREMENT PRIMARY KEY,
+  name VARCHAR(50) NOT NULL
+);
+Remember that primary keys should be unique and not NULL. They are used to identify and retrieve individual rows in a table efficiently. They also play a crucial role in maintaining data integrity and enforcing relationships between tables.

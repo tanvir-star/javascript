@@ -1,0 +1,23 @@
+At the core of Node.js is its non-blocking, asynchronous architecture, which is facilitated by an important concept known as the "event loop." The event loop is a fundamental mechanism that enables Node.js to efficiently handle I/O operations and manage concurrent tasks without blocking the execution of other code. It is responsible for managing the flow of events and ensuring that operations are executed in an asynchronous and non-blocking manner.
+
+Here's a breakdown of how the event loop works in Node.js:
+
+Event Queue and Callbacks: In Node.js, asynchronous operations (such as reading from files, making network requests, or interacting with databases) are initiated and executed through APIs. When these asynchronous operations complete, they generate events. The events are stored in an event queue along with their corresponding callback functions.
+
+Call Stack: The event loop constantly checks the call stack for any ongoing synchronous code execution. The call stack is a data structure that keeps track of the currently executing functions in the program.
+
+Event Loop Phases:
+
+Poll: In this phase, the event loop checks if there are any pending asynchronous I/O operations (such as file reads or network requests) that have completed. If there are, their corresponding callbacks are moved to the callback queue.
+
+Callback Queue: Also known as the "message queue," this is where the events with their associated callback functions are stored. These callbacks are waiting to be executed. However, they don't get executed immediately; they're processed one at a time in the next phase of the event loop.
+
+Check: In this phase, certain types of callbacks (e.g., setImmediate) are executed. These callbacks allow you to schedule code to be executed immediately after the current phase of the event loop.
+
+Close Callbacks: Callbacks related to closing resources, like sockets or file handles, are executed in this phase.
+
+Execution: The event loop moves callbacks from the callback queue to the call stack, executing them one by one. It's important to note that while callbacks are executed, they might initiate new asynchronous operations, generating more events and extending the event loop cycle.
+
+Timers: In addition to the core event loop phases, timers are also managed. Timers are used to schedule code to run at a specified time in the future using functions like setTimeout and setInterval.
+
+The event loop cycle continues indefinitely, constantly checking the various phases and ensuring that asynchronous operations are executed in a timely and non-blocking manner. This architecture allows Node.js to handle a large number of concurrent connections and I/O operations efficiently, making it well-suited for applications that require high scalability and responsiveness.

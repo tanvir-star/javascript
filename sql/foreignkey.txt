@@ -1,0 +1,44 @@
+With this data, let's see how the tables and the foreign key relationship work:
+
+
+CREATE TABLE orders (
+  order_id INT PRIMARY KEY,
+  customer_id INT,
+  order_date DATE,
+  FOREIGN KEY (customer_id) REFERENCES customers(customer_id)
+    ON DELETE CASCADE
+);
+
+
+Customers Table:
+
+customer_id	name
+1	Alice
+2	Bob
+3	Charlie
+This table stores information about customers. The customer_id is the primary key, and it uniquely identifies each customer. For example, Alice has customer_id 1, Bob has customer_id 2, and Charlie has customer_id 3.
+
+Orders Table:
+
+order_id	customer_id	order_date
+101	1	2023-08-10
+102	1	2023-08-12
+103	2	2023-08-14
+104	3	2023-08-15
+This table stores information about orders. The order_id is the primary key, and it uniquely identifies each order. The customer_id column is a foreign key that references the customer_id column in the customers table. It establishes a relationship between orders and customers.
+
+Order 101 and 102 are associated with customer Alice (customer_id 1).
+Order 103 is associated with customer Bob (customer_id 2).
+Order 104 is associated with customer Charlie (customer_id 3).
+Foreign Key Relationship:
+
+The foreign key relationship ensures that the customer_id values in the orders table correspond to valid customer_id values in the customers table. This helps maintain data integrity and consistency.
+
+For example, if we were to delete customer Alice (customer_id 1) from the customers table:
+
+sql
+Copy code
+DELETE FROM customers WHERE customer_id = 1;
+With the ON DELETE CASCADE option in the foreign key definition, this action would also automatically delete all orders associated with customer Alice (customer_id 1) from the orders table. In this case, orders 101 and 102 would be deleted.
+
+Foreign keys help ensure that data relationships are maintained accurately and that no orphaned or inconsistent data remains in the database.

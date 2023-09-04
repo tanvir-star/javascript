@@ -1,0 +1,61 @@
+ddl and dml in sql
+
+In SQL (Structured Query Language), there are two main categories of operations that are used to interact with a database: Data Definition Language (DDL) and Data Manipulation Language (DML).
+
+Data Definition Language (DDL):
+DDL deals with the structure of the database schema, such as creating, altering, and deleting database objects like tables, indexes, and constraints. These operations define how the data is organized within the database.
+Common DDL commands include:
+
+CREATE: Used to create new database objects like tables, indexes, views, and more.
+ALTER: Used to modify the structure of existing database objects, such as adding or dropping columns in a table.
+DROP: Used to delete database objects like tables or indexes.
+TRUNCATE: Used to remove all records from a table without removing the table structure.
+RENAME: Used to rename database objects.
+Example DDL commands:
+
+sql
+Copy code
+-- Create a new table
+CREATE TABLE users (
+  id INT PRIMARY KEY,
+  username VARCHAR(50),
+  email VARCHAR(100)
+);
+
+-- Add a new column to an existing table
+ALTER TABLE users
+ADD COLUMN registration_date DATE;
+
+-- Drop a table
+DROP TABLE users;
+Data Manipulation Language (DML):
+DML deals with the manipulation of data stored in the database. These operations allow you to insert, update, retrieve, and delete data in the tables defined using DDL.
+Common DML commands include:
+
+SELECT: Used to retrieve data from one or more tables.
+INSERT: Used to add new records into a table.
+UPDATE: Used to modify existing records in a table.
+DELETE: Used to remove records from a table.
+Example DML commands:
+
+sql
+Copy code
+-- Insert a new user
+INSERT INTO users (id, username, email)
+VALUES (1, 'john_doe', 'john@example.com');
+
+-- Update a user's email
+UPDATE users
+SET email = 'jane@example.com'
+WHERE id = 2;
+
+-- Delete a user
+DELETE FROM users
+WHERE id = 3;
+
+-- Retrieve user information
+SELECT id, username, email
+FROM users
+WHERE username = 'john_doe';
+
+In summary, DDL is concerned with defining the structure of the database, while DML focuses on interacting with the data within the database. Both categories of SQL commands are essential for managing and maintaining a relational database system.
